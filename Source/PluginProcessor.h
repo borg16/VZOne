@@ -61,7 +61,7 @@ namespace VZOne
 
     private:
         //==============================================================================
-        juce::Synthesiser synth;
+        juce::Synthesiser* synth;
         Sound* sound;
 
         JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(Processor)

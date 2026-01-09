@@ -27,18 +27,13 @@ namespace VZOne
             : configuration(config),
             currentAngle(0.0),
             angleDelta(cyclesPerSample * 2.0 * juce::MathConstants<double>::pi),
-            level(0.0) {
+            level(1.0) {
         }
 
-        float processSample() {
-            if (angleDelta == 0.0)
-                return 0.0;
-            auto sample = lookupWave(currentAngle, 2) * level;
-            currentAngle += angleDelta;
-            if (currentAngle >= juce::MathConstants<double>::twoPi)
-                currentAngle -= juce::MathConstants<double>::twoPi;
-            return static_cast<float>(sample);
-        }
+        float processSample();
+
+        void endNote();
+        bool isActive() const { return angleDelta > 0; }
 
     private:
         static float lookupWave(double angle, int waveIndex);

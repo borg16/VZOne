@@ -11,28 +11,29 @@
 #include <JuceHeader.h>
 #include "PluginProcessor.h"
 
-using namespace VZOne;
-
-//==============================================================================
-/**
-*/
-class VZOneAudioProcessorEditor  : public juce::AudioProcessorEditor
+namespace VZOne
 {
-public:
-    VZOneAudioProcessorEditor (Processor&);
-    ~VZOneAudioProcessorEditor() override;
-
     //==============================================================================
-    void paint (juce::Graphics&) override;
-    void resized() override;
+    /**
+    */
+    class VZOneAudioProcessorEditor  : public juce::AudioProcessorEditor
+    {
+    public:
+        VZOneAudioProcessorEditor (Processor&);
+        ~VZOneAudioProcessorEditor() override;
 
-private:
-    // This reference is provided as a quick way for your editor to
-    // access the processor object that created it.
-    Processor& audioProcessor;
+        //==============================================================================
+        void paint (juce::Graphics&) override;
+        void resized() override;
 
-  juce::Slider waveformSlider;
-  juce::Label waveformLabel;
+    private:
+        // This reference is provided as a quick way for your editor to
+        // access the processor object that created it.
+        Processor& audioProcessor;
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (VZOneAudioProcessorEditor)
-};
+        juce::Slider waveformSlider;
+        juce::Label waveformLabel;
+
+        JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (VZOneAudioProcessorEditor)
+    };
+}

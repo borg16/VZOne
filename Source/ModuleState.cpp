@@ -13,6 +13,7 @@
 #include <JuceHeader.h>
 
 #include "ModuleState.h"
+#include "ModuleConfiguration.h"
 #include "VZOneSound.h"
 
 using namespace VZOne;
@@ -72,5 +73,25 @@ float ModuleState::lookupWave(double angle, int waveIndex)
     auto value1 = table[static_cast<size_t>(index1)];
 
     return static_cast<float>(value0 + (value1 - value0) * frac);
+}
+
+float ModuleState::processSample() {
+    if (!isActive())
+        return 0.0f;
+        
+    // Use the waveform type from configuration
+    int waveformType = configuration ? configuration->getWaveformType() : 2;
+    auto sample = lookupWave(currentAngle, waveformType) * level;
+    
+    currentAngle += angleDelta;
+    if (currentAngle >= juce::MathConstants<double>::twoPi)
+        currentAngle -= juce::MathConstants<double>::twoPi;
+        
+    return static_cast<float>(sample);
+}
+
+void ModuleState::endNote()
+{
+    angleDelta = 0.0;
 }
 
