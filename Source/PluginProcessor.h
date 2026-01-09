@@ -53,12 +53,11 @@ namespace VZOne
         const juce::String getProgramName(int index) override;
         void changeProgramName(int index, const juce::String& newName) override;
 
-        void setWaveformType(int newType);
-        int getWaveformType() const;
-
         //==============================================================================
         void getStateInformation(juce::MemoryBlock& destData) override;
         void setStateInformation(const void* data, int sizeInBytes) override;
+
+        Sound* getSound() const { return sound; }
 
     private:
         //==============================================================================

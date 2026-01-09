@@ -16,10 +16,10 @@ VZOneAudioProcessorEditor::VZOneAudioProcessorEditor (VZOne::Processor& p)
   waveformSlider.setSliderStyle(juce::Slider::LinearHorizontal);
   waveformSlider.setTextBoxStyle(juce::Slider::TextBoxBelow, false, 60, 20);
   waveformSlider.setRange(0, VZOne::Sound::waveformCount - 1, 1.0);
-  waveformSlider.setValue(audioProcessor.getWaveformType());
+  waveformSlider.setValue(audioProcessor.getSound()->getConfiguration(0)->getWaveformType());
   waveformSlider.onValueChange = [this]()
   {
-    audioProcessor.setWaveformType(static_cast<int>(waveformSlider.getValue()));
+      audioProcessor.getSound()->getConfiguration(0)->setWaveformType(juce::jlimit(0, Sound::waveformCount - 1, static_cast<int>(waveformSlider.getValue())));
   };
 
   waveformLabel.setText("Waveform", juce::dontSendNotification);

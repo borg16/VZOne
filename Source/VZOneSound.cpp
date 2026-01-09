@@ -27,13 +27,3 @@ bool VZOne::Sound::appliesToChannel(int /*midiChannel*/)
 {
     return true;
 }
-
-void VZOne::Sound::setWaveformType(int newType)
-{
-  waveformType = newType;
-}
-
-int VZOne::Sound::getWaveformType() const
-{
-  return waveformType;
-}

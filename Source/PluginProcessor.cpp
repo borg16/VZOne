@@ -63,21 +63,21 @@
         return 0;
     }
 
-    void VZOne::Processor::setCurrentProgram(int index)
+    void VZOne::Processor::setCurrentProgram(int /*index*/)
     {
     }
 
-    const juce::String VZOne::Processor::getProgramName(int index)
+    const juce::String VZOne::Processor::getProgramName(int /*index*/)
     {
         return {};
     }
 
-    void VZOne::Processor::changeProgramName(int index, const juce::String& newName)
+    void VZOne::Processor::changeProgramName(int /*index*/, const juce::String& /*newName*/)
     {
     }
 
     //==============================================================================
-    void VZOne::Processor::prepareToPlay(double sampleRate, int samplesPerBlock)
+    void VZOne::Processor::prepareToPlay(double sampleRate, int /*samplesPerBlock*/)
     {
         synth.setCurrentPlaybackSampleRate(sampleRate);
     }
@@ -107,20 +107,6 @@
         synth.renderNextBlock(buffer, midiMessages, 0, buffer.getNumSamples());
     }
 
-    void VZOne::Processor::setWaveformType(int newType)
-    {
-        if (sound != nullptr)
-            sound->setWaveformType(juce::jlimit(0, Sound::waveformCount - 1, newType));
-    }
-
-    int VZOne::Processor::getWaveformType() const
-    {
-        if (sound != nullptr)
-            return sound->getWaveformType();
-
-        return 0;
-    }
-
     //==============================================================================
     bool VZOne::Processor::hasEditor() const
     {
@@ -133,14 +119,14 @@
     }
 
     //==============================================================================
-    void VZOne::Processor::getStateInformation(juce::MemoryBlock& destData)
+    void VZOne::Processor::getStateInformation(juce::MemoryBlock& /*destData*/)
     {
         // You should use this method to store your parameters in the memory block.
         // You could do that either as raw data, or use the XML or ValueTree classes
         // as intermediaries to make it easy to save and load complex data.
     }
 
-    void VZOne::Processor::setStateInformation(const void* data, int sizeInBytes)
+    void VZOne::Processor::setStateInformation(const void* /*data*/, int /*sizeInBytes*/)
     {
         // You should use this method to restore your parameters from this memory block,
         // whose contents will have been created by the getStateInformation() call.

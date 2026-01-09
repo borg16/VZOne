@@ -7,6 +7,12 @@
               lv2Uri="http://www.borgmeier.org/plugins/VZOne">
   <MAINGROUP id="KZKaFp" name="VZOne">
     <GROUP id="{C92C597F-135F-B008-C06D-C82F11138721}" name="Source">
+      <FILE id="aiyZzv" name="ModuleConfiguration.cpp" compile="1" resource="0"
+            file="Source/ModuleConfiguration.cpp"/>
+      <FILE id="dX2N5P" name="ModuleConfiguration.h" compile="0" resource="0"
+            file="Source/ModuleConfiguration.h"/>
+      <FILE id="SrSe7v" name="ModuleState.cpp" compile="1" resource="0" file="Source/ModuleState.cpp"/>
+      <FILE id="MaoheL" name="ModuleState.h" compile="0" resource="0" file="Source/ModuleState.h"/>
       <FILE id="mC95JQ" name="VZOneSound.cpp" compile="1" resource="0" file="Source/VZOneSound.cpp"/>
       <FILE id="Hcs3fc" name="VZOneSound.h" compile="0" resource="0" file="Source/VZOneSound.h"/>
       <FILE id="zqHETH" name="VZOneVoice.cpp" compile="1" resource="0" file="Source/VZOneVoice.cpp"/>

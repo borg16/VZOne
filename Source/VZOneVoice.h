@@ -10,11 +10,16 @@
 
 #pragma once
 
-#include <JuceHeader.h>
 #include <array>
+
+#include <JuceHeader.h>
+
+#include "ModuleState.h"
+
 
 class VZOneVoice : public juce::SynthesiserVoice
 {
+public:
     // Inherited via SynthesiserVoice
     bool canPlaySound(juce::SynthesiserSound*) override;
     void startNote(int midiNoteNumber, float velocity, juce::SynthesiserSound* sound, int currentPitchWheelPosition) override;
@@ -24,16 +29,5 @@ class VZOneVoice : public juce::SynthesiserVoice
     void renderNextBlock(juce::AudioBuffer<float>& outputBuffer, int startSample, int numSamples) override;
 
 private:
-    static constexpr int tableSize = 2048;
-    static constexpr int waveformCount = 6;
-    using WaveTable = std::array<float, tableSize>;
-
-    static const std::array<WaveTable, waveformCount> waveTables;
-
-    static std::array<WaveTable, waveformCount> buildWaveTables();
-    static float saw(float phase, float p, float u, float v);
-    float lookupWave(double angle, int waveIndex) const;
-
-    int waveformIndex = 0;
-    double currentAngle = 0.0, angleDelta = 0.0, level = 0.0, tailOff = 0.0;
+    VZOne::ModuleState moduleState[1];
 };
